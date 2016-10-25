@@ -1,0 +1,189 @@
+{
+  "kind": "discovery#restDescription",
+  "discoveryVersion": "v1",
+  "id": "foo:v1",
+  "name": "foo",
+  "version": "v1",
+  "description": "This is an API",
+  "icons": {
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  },
+  "protocol": "rest",
+  "baseUrl": "http://localhost:8080/api/foo/v1/foos/",
+  "basePath": "/api/foo/v1/foos/",
+  "rootUrl": "http://localhost:8080/api/",
+  "servicePath": "foo/v1/foos/",
+  "batchPath": "batch",
+  "parameters": {
+    "alt": {
+      "type": "string",
+      "description": "Data format for the response.",
+      "default": "json",
+      "enum": [
+        "json"
+      ],
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json"
+      ],
+      "location": "query"
+    },
+    "fields": {
+      "type": "string",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "location": "query"
+    },
+    "key": {
+      "type": "string",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "location": "query"
+    },
+    "oauth_token": {
+      "type": "string",
+      "description": "OAuth 2.0 token for the current user.",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "type": "boolean",
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true",
+      "location": "query"
+    },
+    "quotaUser": {
+      "type": "string",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+      "location": "query"
+    },
+    "userIp": {
+      "type": "string",
+      "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+      "location": "query"
+    }
+  },
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/userinfo.email": {
+          "description": "View your email address"
+        }
+      }
+    }
+  },
+  "schemas": {
+    "Foo": {
+      "id": "Foo",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    }
+  },
+  "resources": {
+    "foo": {
+      "methods": {
+        "create": {
+          "id": "foo.foo.create",
+          "path": "{id}",
+          "httpMethod": "PUT",
+          "description": "create desc",
+          "parameters": {
+            "id": {
+              "type": "string",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "id"
+          ],
+          "request": {
+            "$ref": "Foo",
+            "parameterName": "resource"
+          },
+          "response": {
+            "$ref": "Foo"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/userinfo.email"
+          ]
+        },
+        "delete": {
+          "id": "foo.foo.delete",
+          "path": "{id}",
+          "httpMethod": "DELETE",
+          "description": "delete desc",
+          "parameters": {
+            "id": {
+              "type": "string",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "id"
+          ],
+          "response": {
+            "$ref": "Foo"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/userinfo.email"
+          ]
+        },
+        "get": {
+          "id": "foo.foo.get",
+          "path": "{id}",
+          "httpMethod": "GET",
+          "description": "get desc",
+          "parameters": {
+            "id": {
+              "type": "string",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "id"
+          ],
+          "response": {
+            "$ref": "Foo"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/userinfo.email"
+          ]
+        },
+        "update": {
+          "id": "foo.foo.update",
+          "path": "{id}",
+          "httpMethod": "POST",
+          "description": "update desc",
+          "parameters": {
+            "id": {
+              "type": "string",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "parameterOrder": [
+            "id"
+          ],
+          "request": {
+            "$ref": "Foo",
+            "parameterName": "resource"
+          },
+          "response": {
+            "$ref": "Foo"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/userinfo.email"
+          ]
+        }
+      }
+    }
+  }
+}

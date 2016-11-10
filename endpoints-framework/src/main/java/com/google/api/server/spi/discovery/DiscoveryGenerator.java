@@ -58,6 +58,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -167,7 +168,7 @@ public class DiscoveryGenerator {
         .setId(methodConfig.getFullMethodName())
         .setPath(methodConfig.getPath().substring(sharedApiPath.length()))
         .setScopes(AuthScopeExpressions.encodeMutable(methodConfig.getScopeExpression()));
-    if (!methodConfig.getPathParameters().isEmpty()) {
+    if (!parameters.isEmpty()) {
       method.setParameterOrder(Lists.newArrayList(parameters.keySet()))
           .setParameters(parameters);
     }
@@ -198,8 +199,8 @@ public class DiscoveryGenerator {
       docSchema.setProperties(fields);
     }
     if (!schema.enumValues().isEmpty()) {
-      docSchema.setEnum(schema.enumValues());
-      docSchema.setEnumDescriptions(schema.enumDescriptions());
+      docSchema.setEnum(new ArrayList<>(schema.enumValues()));
+      docSchema.setEnumDescriptions(new ArrayList<>(schema.enumDescriptions()));
     }
     return docSchema;
   }
